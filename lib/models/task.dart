@@ -5,7 +5,6 @@ import 'package:equatable/equatable.dart';
   override == and hashCode to compare objects 
   by value or extend equatable, requires final properties
 */
-
 class Task extends Equatable {
   final String title;
   final bool? isDone;
