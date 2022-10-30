@@ -1,4 +1,5 @@
 import 'package:favs_app/blocs/bloc_exports.dart';
+import 'package:favs_app/screens/my_drawer.dart';
 import 'package:flutter/material.dart';
 import '../models/task.dart';
 import '../widgets/tasks_lists.dart';
@@ -8,6 +9,8 @@ class TasksScreen extends StatelessWidget {
   TasksScreen({Key? key}) : super(key: key);
 
   TextEditingController titleController = TextEditingController();
+
+  static const id = 'tasks_screen';
 
   void _addTask(BuildContext context) {
     showModalBottomSheet(
@@ -34,6 +37,7 @@ class TasksScreen extends StatelessWidget {
               )
             ],
           ),
+          drawer: const MyDrawer(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
