@@ -27,6 +27,9 @@ class TaskList extends StatelessWidget {
                     .add(UpdateTask(task: tasksList[index]));
               },
             ),
+            onLongPress: () => {
+              context.read<TasksBloc>().add(DeleteTask(task: tasksList[index]))
+            },
           );
         },
       ),
