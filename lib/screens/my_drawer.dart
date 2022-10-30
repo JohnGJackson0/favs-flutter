@@ -4,8 +4,15 @@ import 'package:flutter/material.dart';
 
 import '../blocs/bloc_exports.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({Key? key}) : super(key: key);
+
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  bool switchValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +21,6 @@ class MyDrawer extends StatelessWidget {
         child: Column(
           children: [
             Container(
-                color: Colors.grey,
                 child: const Text('Task Drawer'),
                 padding:
                     const EdgeInsets.symmetric(vertical: 14, horizontal: 20)),
@@ -31,16 +37,25 @@ class MyDrawer extends StatelessWidget {
               },
             ),
             const Divider(),
-            BlocBuilder<TasksBloc, TasksState>(
+            BlocBuilder<TasksBloc, TasksState>(builder: (context, state) {
+              return GestureDetector(
+                onTap: () =>
+                    Navigator.of(context).pushReplacementNamed(RecycleBin.id),
+                child: ListTile(
+                    leading: const Icon(Icons.delete),
+                    title: const Text('Bin'),
+                    trailing: Text('${state.removedTasks.length}')),
+              );
+            }),
+            BlocBuilder<ThemeBloc, ThemeState>(
               builder: (context, state) {
-                return GestureDetector(
-                  onTap: () =>
-                      Navigator.of(context).pushReplacementNamed(RecycleBin.id),
-                  child: ListTile(
-                      leading: const Icon(Icons.delete),
-                      title: const Text('Bin'),
-                      trailing: Text('${state.removedTasks.length}')),
-                );
+                return Switch(
+                    value: state.isDarkTheme,
+                    onChanged: (value) {
+                      context
+                          .read<ThemeBloc>()
+                          .add(UpdateAppTheme(newThemeIsDark: value));
+                    });
               },
             )
           ],

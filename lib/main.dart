@@ -1,4 +1,5 @@
 import 'package:favs_app/services/app_router.dart';
+import 'package:favs_app/services/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -23,15 +24,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TasksBloc(),
-      child: MaterialApp(
-        title: 'Flutter Tasks App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => TasksBloc(),
         ),
-        home: TasksScreen(),
-        onGenerateRoute: appRouter.onGenerateRoute,
+        BlocProvider(
+          create: (context) => ThemeBloc(),
+        ),
+      ],
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+        builder: (context, state) {
+          return MaterialApp(
+            title: 'Flutter Tasks App',
+            theme: state.isDarkTheme
+                ? AppThemes.appThemeData[AppTheme.darkTheme]
+                : AppThemes.appThemeData[AppTheme.lightTheme],
+            home: TasksScreen(),
+            onGenerateRoute: appRouter.onGenerateRoute,
+          );
+        },
       ),
     );
   }

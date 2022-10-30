@@ -15,6 +15,7 @@ class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Theme.of(context).backgroundColor,
       padding: const EdgeInsets.all(20),
       child: Column(
         children: [

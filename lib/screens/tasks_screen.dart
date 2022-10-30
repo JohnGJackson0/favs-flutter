@@ -38,23 +38,27 @@ class TasksScreen extends StatelessWidget {
             ],
           ),
           drawer: const MyDrawer(),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Chip(
-                  label: Text(
-                    '${state.allTasks.length} Tasks',
+          body: Container(
+            color: Theme.of(context).backgroundColor,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: Chip(
+                    label: Text(
+                      '${state.allTasks.length} Tasks',
+                    ),
                   ),
                 ),
-              ),
-              TaskList(tasksList: tasksList),
-            ],
+                TaskList(tasksList: tasksList),
+              ],
+            ),
           ),
           floatingActionButton: FloatingActionButton(
+            
             onPressed: () => _addTask(context),
             tooltip: 'Add Task',
-            child: const Icon(Icons.add),
+              child: const Icon(Icons.add)
           ),
         );
       },
