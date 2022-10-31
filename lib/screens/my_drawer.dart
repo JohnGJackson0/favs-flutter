@@ -3,6 +3,8 @@ import 'package:favs_app/screens/tasks_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../blocs/bloc_exports.dart';
+import '../blocs/theme_bloc/theme_event.dart';
+import '../blocs/theme_bloc/theme_state.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({Key? key}) : super(key: key);

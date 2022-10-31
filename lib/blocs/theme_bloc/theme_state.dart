@@ -1,4 +1,4 @@
-part of 'theme_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 class ThemeState extends Equatable {
   final bool isDarkTheme;
@@ -7,6 +7,16 @@ class ThemeState extends Equatable {
 
   @override
   List<Object> get props => [isDarkTheme];
-}
 
-class ThemeInitial extends ThemeState {}
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'isDarkTheme': isDarkTheme,
+    };
+  }
+
+  factory ThemeState.fromMap(Map<String, dynamic> map) {
+    return ThemeState(
+      isDarkTheme: map['isDarkTheme'] as bool,
+    );
+  }
+}

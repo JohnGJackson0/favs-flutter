@@ -1,4 +1,4 @@
-part of 'theme_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 class ThemeEvent extends Equatable {
   final bool isDarkTheme;
