@@ -1,5 +1,5 @@
 import 'package:favs_app/screens/recycle_bin.dart';
-import 'package:favs_app/screens/tasks_screen.dart';
+import 'package:favs_app/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../blocs/bloc_exports.dart';
@@ -30,11 +30,11 @@ class _MyDrawerState extends State<MyDrawer> {
               builder: (context, state) {
                 return GestureDetector(
                   onTap: () => Navigator.of(context)
-                      .pushReplacementNamed(TasksScreen.id),
+                      .pushReplacementNamed(TabsScreen.id),
                   child: ListTile(
                       leading: const Icon(Icons.folder_special),
                       title: const Text('My Tasks'),
-                      trailing: Text('${state.allTasks.length}')),
+                      trailing: Text('${state.pendingTasks.length}')),
                 );
               },
             ),

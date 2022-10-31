@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 import '../models/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({
+  AddTaskScreen({
     Key? key,
-    required this.titleController,
   }) : super(key: key);
 
-  final TextEditingController titleController;
+  TextEditingController titleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
