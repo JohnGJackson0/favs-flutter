@@ -9,6 +9,8 @@ class Task extends Equatable {
   final String title;
   final String description;
   final String id;
+  final String date;
+  final bool? isFavorited;
   final bool? isDone;
   final bool? isDeleted;
 
@@ -16,6 +18,8 @@ class Task extends Equatable {
       {required this.title,
       required this.description,
       required this.id,
+      required this.date,
+      required this.isFavorited,
       required this.isDone,
       required this.isDeleted}) {
     // ??   return isDone if null then false
@@ -28,6 +32,8 @@ class Task extends Equatable {
     String? title,
     String? description,
     String? id,
+    String? date,
+    bool? isFavorited,
     bool? isDone,
     bool? isDeleted,
   }) {
@@ -35,6 +41,8 @@ class Task extends Equatable {
       title: title ?? this.title,
       description: description ?? this.description,
       id: id ?? this.id,
+      date: date ?? this.date,
+      isFavorited: isFavorited ?? this.isFavorited,
       isDone: isDone ?? this.isDone,
       isDeleted: isDeleted ?? this.isDeleted,
     );
@@ -51,6 +59,8 @@ class Task extends Equatable {
       'title': title,
       'description': description,
       'id': id,
+      'date': date,
+      'isFavorited': isFavorited,
       'isDone': isDone,
       'isDeleted': isDeleted,
     };
@@ -67,11 +77,13 @@ class Task extends Equatable {
       title: map['title'] as String,
       description: map['description'] as String,
       id: map['id'] ?? '',
+      date: map['date'] ?? '',
+      isFavorited: map['isFavorited'] ?? '',
       isDone: map['isDone'] != null ? map['isDone'] as bool : null,
       isDeleted: map['isDeleted'] != null ? map['isDeleted'] as bool : null,
     );
   }
 
   @override
-  List<Object?> get props => [title, id, isDone, isDeleted];
+  List<Object?> get props => [title, id, date, isFavorited, isDone, isDeleted];
 }

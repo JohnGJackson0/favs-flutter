@@ -48,6 +48,8 @@ class AddTaskScreen extends StatelessWidget {
                         title: titleController.text,
                             description: descriptionController.text, 
                             id: GUIDGen.generate(),
+                            date: DateTime.now().toString(),
+                            isFavorited: false,
                         isDone: false,
                         isDeleted: false);
 
